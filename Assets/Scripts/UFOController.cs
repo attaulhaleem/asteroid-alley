@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UFOHover : MonoBehaviour
+public class UFOController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float movementSpeed = 10.0f;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     public Transform target;
     public Vector3 offset = new Vector3(0f, 3f, -6f);

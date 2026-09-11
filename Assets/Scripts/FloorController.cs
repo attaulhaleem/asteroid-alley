@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EndlessFloor : MonoBehaviour
+public class FloorController : MonoBehaviour
 {
     public Transform player;
     public float snapSize = 10.0f;
