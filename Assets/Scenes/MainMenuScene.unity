@@ -279,6 +279,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2844440781571810554, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844440781571810554, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844440781571810554, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844440781571810554, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3150710515085188967, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -293,11 +309,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3559596871298904247, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
       propertyPath: m_fontSize
-      value: 25.05
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3575398256679278164, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
       propertyPath: m_Name
       value: QuitButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575719789238578994, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575719789238578994, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575719789238578994, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575719789238578994, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5587525784013888371, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -401,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8714115031032509899, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
       propertyPath: m_fontSize
-      value: 25.05
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8837161400849693333, guid: 4181171b499e14652877e58d7d9e7a50, type: 3}
       propertyPath: m_Name
@@ -548,7 +580,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
