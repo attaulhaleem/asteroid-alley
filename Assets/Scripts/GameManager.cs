@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI References")]
     public GameObject gameOverMenu;
+    public GameObject uiCanvas;
 
     [Header("Explosion Effect")]
     public GameObject explosionPrefab;
@@ -63,6 +64,11 @@ public class GameManager : MonoBehaviour
         // Wait for real time seconds
         yield return _waitForSecondsRealtime2_0;
 
+        if (uiCanvas != null)
+        {
+            uiCanvas.SetActive(false);
+        }
+
         if (gameOverMenu != null)
         {
             gameOverMenu.SetActive(true);
@@ -93,11 +99,5 @@ public class GameManager : MonoBehaviour
                 rb.linearVelocity = Random.onUnitSphere * Random.Range(20f, 60f);
             }
         }
-    }
-
-    public void RestartGame()
-    {
-        Time.timeScale = 1.0f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 }

@@ -3,18 +3,29 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
+    [Header("UI References")]
     public GameObject pauseMenu;
+    public GameObject mainMenuUI;
+    public GameObject gameOverMenuUI; // Add this reference
+
     private bool isPaused = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pauseMenu.SetActive(false);
+        if (pauseMenu != null) pauseMenu.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Ignore the Escape key completely if the Main Menu or Game Over Menu is visible
+        bool isMainMenuActive = mainMenuUI != null && mainMenuUI.activeInHierarchy;
+        bool isGameOverActive = gameOverMenuUI != null && gameOverMenuUI.activeInHierarchy;
+
+        if (isMainMenuActive || isGameOverActive)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -50,6 +61,6 @@ public class PauseMenuController : MonoBehaviour
     public void OnClickMainMenuButton()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

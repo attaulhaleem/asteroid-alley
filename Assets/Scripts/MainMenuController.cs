@@ -1,23 +1,29 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("UI References")]
+    public GameObject mainMenu;
+    public GameObject gameUI;
+
     void Start()
     {
-        
-    }
+        // Pause the game world in the background while on the menu
+        Time.timeScale = 0.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Show main menu, hide game UI
+        if (mainMenu != null) mainMenu.SetActive(true);
+        if (gameUI != null) gameUI.SetActive(false);
     }
 
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("GameScene");
+        // Hide main menu, show game UI
+        if (mainMenu != null) mainMenu.SetActive(false);
+        if (gameUI != null) gameUI.SetActive(true);
+
+        // Resume time to start playing
+        Time.timeScale = 1.0f;
     }
 
     public void OnClickQuitButton()
