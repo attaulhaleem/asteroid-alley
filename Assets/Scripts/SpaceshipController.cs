@@ -1,6 +1,7 @@
 using UnityEngine;
-
 [RequireComponent(typeof(Rigidbody))]
+
+[RequireComponent(typeof(SpaceshipController))]
 public class SpaceshipController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -48,8 +49,27 @@ public class SpaceshipController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Freezes the game immediately upon physically hitting an asteroid
-        Debug.Log("Ship crashed into " + collision.gameObject.name);
-        Time.timeScale = 0.0f;
+        ContactPoint contact = collision.GetContact(0);
+        
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.GameOver(contact.point);
+        }
+
+        // Hide asteroid that hit the player
+        collision.gameObject.SetActive(false);
+        
+        // Disable the player's ability to steer
+        GetComponent<SpaceshipController>().enabled = false;
+
+        // Throw ship into out-of-control spin
+        if (TryGetComponent<Rigidbody>(out var rb))
+        {
+            // Unlock rotation constraints so ship can tumble
+            rb.constraints = RigidbodyConstraints.None;
+            rb.angularVelocity = Random.onUnitSphere * 45f;
+            Vector3 knockbackDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), -2f).normalized;
+            rb.linearVelocity = knockbackDirection * 30f; 
+        }
     }
 }

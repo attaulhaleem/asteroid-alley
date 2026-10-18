@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class AsteroidCleanup : MonoBehaviour
 {
-    private Transform player;
+    private GameObject playerObject;
 
     void Start()
     {
-        player = GameObject.Find("Spaceship").transform;
+        playerObject = GameObject.Find("Spaceship");
     }
 
     void Update()
     {
-        if (player == null) return;
+        if (playerObject == null) return;
 
-        // If the asteroid is ever physically behind the player on the Z-axis, destroy it instantly
-        if (transform.position.z < player.position.z - 10.0f)
+        if (transform.position.z < playerObject.transform.position.z - 10.0f)
         {
             Destroy(gameObject);
         }
