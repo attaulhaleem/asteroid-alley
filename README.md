@@ -3,7 +3,7 @@
 An endless space evasion game built in Unity 6. Navigate a spaceship through a dense asteroid field, survive as long as possible, and increase your score by covering distance.
 
 <div align="center">
-  <img width="50%" alt="Screenshot of gameplay" src="https://github.com/user-attachments/assets/f4f96687-e7c4-42c3-a165-e12de209ad3b" />
+  <img width="50%" alt="Screenshot of gameplay" src="https://github.com/user-attachments/assets/ee979a04-49e0-49de-be62-fd78193a614d" />
 </div>
 
 ## Controls
