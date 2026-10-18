@@ -13,7 +13,6 @@ public class AsteroidSpawner : MonoBehaviour
     public float maxSpawnHeight = 200.0f;
     public float minSpawnDistance = 200.0f;
     public float maxSpawnDistance = 200.0f;
-    public float spawnWidthRange = 80.0f;
     public float spawnInterval = 0.1f;
     public float lifetime = 15.0f;
 
@@ -39,18 +38,22 @@ public class AsteroidSpawner : MonoBehaviour
 
     private void SpawnAsteroid()
     {
-        float spawnX = player.position.x + Random.Range(minSpawnWidth, maxSpawnWidth);
-        float spawnY = player.position.y + Random.Range(minSpawnHeight, maxSpawnHeight);
-        float spawnZ = player.position.z + Random.Range(minSpawnDistance, maxSpawnDistance);
-        Vector3 spawnPosition = new(spawnX, spawnY, spawnZ);
+        Vector3 localSpawnOffset = new Vector3(
+            Random.Range(minSpawnWidth, maxSpawnWidth),
+            Random.Range(minSpawnHeight, maxSpawnHeight),
+            Random.Range(minSpawnDistance, maxSpawnDistance)
+        );
+        
+        Vector3 spawnPosition = player.position + player.TransformDirection(localSpawnOffset);
         
         GameObject asteroid = Instantiate(asteroidPrefab, spawnPosition, Random.rotation);
 
         if (asteroid.TryGetComponent<Rigidbody>(out var rb))
         {
-            Vector3 targetOffset = new(Random.Range(-200.0f, 200.0f), Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f));
-            Vector3 targetPosition = player.position + targetOffset;
+            Vector3 targetOffset = new(Random.Range(-100.0f, 100.0f), Random.Range(-25.0f, 25.0f), Random.Range(-25.0f, 25.0f));
+            Vector3 targetPosition = player.position + player.TransformDirection(targetOffset);
             Vector3 directionToPlayer = (targetPosition - spawnPosition).normalized;
+
             float speed = Random.Range(minSpeed, maxSpeed);
             rb.linearVelocity = directionToPlayer * speed;
             rb.angularVelocity = Random.insideUnitSphere * maxTumble;

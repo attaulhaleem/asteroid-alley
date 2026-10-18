@@ -26,7 +26,9 @@ public class SpaceshipController : MonoBehaviour
 
     void Update()
     {
-        Vector3 targetDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        // Do not allow reversing
+        float forwardInput = Mathf.Clamp01(Input.GetAxis("Vertical")); 
+        Vector3 targetDirection = new Vector3(Input.GetAxis("Horizontal"), 0, forwardInput).normalized;
         Vector3 targetVelocity = targetDirection * movementSpeed;
         float velocityChangeRate = (targetDirection.magnitude > 0.0f) ? acceleration : deceleration;
         currentVelocity = Vector3.Lerp(currentVelocity, targetVelocity, Time.deltaTime * velocityChangeRate);
