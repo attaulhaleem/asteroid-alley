@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public GameObject asteroidPrefab; 
     public int debrisCount = 8; 
 
+    [Header("Audio")]
+    public AudioClip crashSound;
+
     private void Awake()
     {
         // Set up the Singleton
@@ -35,6 +38,11 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(Vector3 impactPoint)
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(crashSound);
+        }
+        
         // Turn off spawner so no new rocks appear
         if (TryGetComponent<AsteroidSpawner>(out var spawner))
         {

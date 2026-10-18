@@ -20,6 +20,9 @@ public class SpaceshipController : MonoBehaviour
     [Header("Visual References")]
     public ParticleSystem starfieldParticles;
 
+    [Header("Audio Settings")]
+    public AudioSource thrusterAudioSource;
+
     private Vector3 currentVelocity;
     private Quaternion baseRotation;
     private Rigidbody rb;
@@ -41,6 +44,19 @@ public class SpaceshipController : MonoBehaviour
     void Update()
     {
         bool isWarping = Input.GetKey(KeyCode.Space);
+
+        // Handle Looping Thruster Audio
+        if (thrusterAudioSource != null)
+        {
+            if (isWarping && !thrusterAudioSource.isPlaying)
+            {
+                thrusterAudioSource.Play();
+            }
+            else if (!isWarping && thrusterAudioSource.isPlaying)
+            {
+                thrusterAudioSource.Stop();
+            }
+        }
 
         // Apply Continuous Physics Warp Boost
         if (isWarping && rb != null)
